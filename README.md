@@ -5,6 +5,7 @@ Dictionaries and tuples are awesome, but it'd be nice to be able to use a tuple 
 
 ### How to use Hashable2ple
 - I would recommend using a typealias on the struct to shorten the name (create an alias of the specialized Hashable2ple type, since Hashable2ple makes use of generics)
+- Both elements in Hashable2ple must also be hashable!
 ```swift
 typealias NameAndAge = Hashable2ple<String, Int>
 ```
