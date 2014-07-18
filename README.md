@@ -1,5 +1,5 @@
 # Hashable2ple
-Hashable tuple (2-ple) struct in Swift
+Hashable tuple (2-tuple) struct in Swift
 
 Dictionaries and tuples are awesome, but it'd be nice to be able to use a tuple as a key in a dictionary. Unfortunately, dictionary keys in Swift must adopt the Hashable protocol. Classes, structs, and enums can implement the Hashable protocol, but NOT tuples. Hashable2ple is a simple struct that implements the Hashable protocol. This isn't the only solution nor the best solution, but I hope it can useful to some.
 
