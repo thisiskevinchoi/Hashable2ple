@@ -31,9 +31,6 @@ import XCTest
 
 class Hashable2pleTests: XCTestCase {
 
-    typealias NameAndAge = Hashable2ple<String, Int>
-    var dictionary: Dictionary<NameAndAge, Int> = Dictionary()
-
     override func setUp() {
         super.setUp()
     }
@@ -44,11 +41,72 @@ class Hashable2pleTests: XCTestCase {
     
     func testExample() {
 
+        typealias NameAndAge = Hashable2ple<String, Int>
+        var dictionary: Dictionary<NameAndAge, Int> = Dictionary()
+
         let kev = NameAndAge("Kev", 21)
         dictionary[kev] = 1
 
         XCTAssertEqual(1, dictionary[NameAndAge("Kev", 21)])
 
     }
-    
+
+    func testExample2() {
+
+        enum State {
+            case black, red, green, blue
+        }
+
+        enum Event {
+            case done, cancel, reset
+        }
+
+        typealias State_Event = Hashable2ple<State, Event>
+
+        let dictionary: Dictionary<State_Event, State> = [
+            State_Event(.black, .cancel): .red,
+            State_Event(.black, .done): .black,
+            State_Event(.red, .cancel): .black,
+            State_Event(.red, .done): .green,
+            State_Event(.green, .cancel): .black,
+            State_Event(.green, .done): .blue,
+            State_Event(.blue, .cancel): .black,
+            State_Event(.blue, .done): .red,
+        ]
+
+        for (key, _) in dictionary {
+            print("hash of key=", key.hashValue)
+        }
+        
+    }
+
+
+    func testExample3() {
+
+        enum State {
+            case black, red, green, blue
+        }
+
+        enum Event {
+            case done, cancel, reset
+        }
+
+        typealias State_Event = HashableTuple<State, Event>
+
+        let dictionary: Dictionary<State_Event, State> = [
+            State_Event(.black, .cancel): .red,
+            State_Event(.black, .done): .black,
+            State_Event(.red, .cancel): .black,
+            State_Event(.red, .done): .green,
+            State_Event(.green, .cancel): .black,
+            State_Event(.green, .done): .blue,
+            State_Event(.blue, .cancel): .black,
+            State_Event(.blue, .done): .red,
+            ]
+
+        for (key, _) in dictionary {
+            print("hash of key=", key.hashValue)
+        }
+
+    }
 }
