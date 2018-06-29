@@ -17,9 +17,9 @@ struct Hashable2ple<P1, P2>: Hashable where P1: Hashable, P2: Hashable {
     }
     // http://stackoverflow.com/questions/24239295/writing-a-good-hashable-implementation-in-swift
     var hashValue: Int {
-    get {
-        return (31 &* firstProperty.hashValue) &+ secondProperty.hashValue
-    }
+        get {
+            return (31 &* firstProperty.hashValue) &+ secondProperty.hashValue
+        }
     }
 }
 
